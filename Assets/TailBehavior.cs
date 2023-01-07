@@ -45,6 +45,8 @@ public class TailBehavior : MonoBehaviour
     }
 
     public void KillMyself() {
+        //old code
+        /*
         if(!partDestroyed) {
         partDestroyed = true;
         if(myHead.GetComponent<TailBehavior>()!=null) {
@@ -55,6 +57,11 @@ public class TailBehavior : MonoBehaviour
             myParentTailList[i].ReplaceMyselfWithFood();
         }
         myParentTailList.RemoveRange(myParentTailList.IndexOf(this),myParentTailList.Count);
+        }
+        */
+        if(!partDestroyed) {
+        partDestroyed = true;
+        myParentSnake.CutTailAt(this);
         }
     }
 

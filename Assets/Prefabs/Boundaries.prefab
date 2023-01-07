@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1993335981118951778
+--- !u!1 &6405878369683900566
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1993335981118951776}
-  - component: {fileID: 1993335981118951779}
-  - component: {fileID: 180956877085943670}
-  - component: {fileID: 6979632140007269276}
-  - component: {fileID: 4969635892564349286}
+  - component: {fileID: 6405878369683900560}
+  - component: {fileID: 6405878369683900567}
+  - component: {fileID: 7667660740110588201}
+  - component: {fileID: 2254684508237931654}
   m_Layer: 0
-  m_Name: SnakePart
+  m_Name: Boundaries
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1993335981118951776
+--- !u!4 &6405878369683900560
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1993335981118951778}
+  m_GameObject: {fileID: 6405878369683900566}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.83, y: -1.23, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.61, y: -8.45, z: 0}
+  m_LocalScale: {x: 31.8142, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &1993335981118951779
+--- !u!212 &6405878369683900567
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1993335981118951778}
+  m_GameObject: {fileID: 6405878369683900566}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -74,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a21fa1f530dc08c44a9222a968c3ff34, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -85,13 +84,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &180956877085943670
+--- !u!61 &7667660740110588201
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1993335981118951778}
+  m_GameObject: {fileID: 6405878369683900566}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -111,41 +110,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &6979632140007269276
+--- !u!114 &2254684508237931654
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1993335981118951778}
+  m_GameObject: {fileID: 6405878369683900566}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da1ca1d0c97a0544aa434353d6f8fe06, type: 3}
+  m_Script: {fileID: 11500000, guid: 916779ad6d7754241b2809deaa1500fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myIndex: 0
-  myParentSnake: {fileID: 0}
-  myTail: {fileID: 0}
-  myHead: {fileID: 0}
-  foodParticle: {fileID: 4734246911496170037, guid: 23429955c43d56a4091c58fee77a347b, type: 3}
---- !u!50 &4969635892564349286
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1993335981118951778}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  oppositeWall: {fileID: 0}
+  spawningOffset: {x: 0, y: 0, z: 0}

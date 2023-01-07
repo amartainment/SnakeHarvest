@@ -32,6 +32,11 @@ public class GameManager : MonoBehaviour
         if(levelTime<0) {
             TimerRanOut();
         }
+
+        if(Input.GetKeyDown(KeyCode.Space)) {
+            TimerRanOut();
+            
+        }
     }
 
     private void TimerRanOut() {

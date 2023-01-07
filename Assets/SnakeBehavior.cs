@@ -9,6 +9,9 @@ public class SnakeBehavior : MonoBehaviour {
 
     public bool playerSnake = false;
 
+    public bool startWithTails =false;
+    public int startingTailCount = 2;
+
 	//Did user died?
 	public bool isDied = false;
 
@@ -33,6 +36,9 @@ public class SnakeBehavior : MonoBehaviour {
 	void Start () {
 		// Move the Snake every 300ms
 		InvokeRepeating("Move", movementTick, movementTick); 
+        if(startWithTails) {
+            InstantiateWithTail(startingTailCount);
+        }
 	}
 
 	// Update is called once per frame
@@ -74,6 +80,35 @@ public class SnakeBehavior : MonoBehaviour {
             }
 		}
 	}
+
+    public void InstantiateWithTail(int tailCount)
+    {
+        for(int i=0;i<tailCount;i++) {
+        GameObject newTail = Instantiate(tailPrefab, transform.position, Quaternion.identity);
+        TailBehavior newTailBehavior = newTail.GetComponent<TailBehavior>();
+        newTailBehavior.SetIndex(tail.Count, this, tail);
+        newTailBehavior.SetColor(headSpriteTransform.GetComponent<SpriteRenderer>().color);
+        tail.Add(newTailBehavior);
+        if (tail.Count > 1)
+        {
+            newTailBehavior.SetHead(tail[tail.IndexOf(newTailBehavior) - 1].transform);
+            newTailBehavior.transform.position = new Vector2(transform.position.x,transform.position.y) - dir*i;
+
+        }
+        else
+        {
+            myTail = newTailBehavior;
+            newTailBehavior.transform.position = new Vector2(transform.position.x,transform.position.y) - dir*i;
+            newTailBehavior.SetHead(transform);
+
+        }
+        }
+        transform.Translate(dir);
+
+    }
+
+
+ 
 
     private void AISnakeControls() {
         float randomFloat = Random.Range(0.00f,1.00f);
@@ -157,7 +192,10 @@ public class SnakeBehavior : MonoBehaviour {
         if(myTail!=null){
         PassPositionToTail(v);
         }
-	}
+	} else {
+        CutTailAt(myTail);
+        Destroy(gameObject);
+    }
     }
 
     void PassPositionToTail(Vector2 myOldPosition) {
@@ -167,6 +205,7 @@ public class SnakeBehavior : MonoBehaviour {
     }
 
 	void OnTriggerEnter2D(Collider2D coll) {
+        Vector3 collisionPosition = transform.position;
 		// Food?
 		if (coll.name.StartsWith("Food")) {
 			// Get longer in next Move call
@@ -177,14 +216,17 @@ public class SnakeBehavior : MonoBehaviour {
 		}
         
         else if(coll.name.StartsWith("Hole")) {
+            
             Destroy(coll.gameObject);
-            if(tail.Count>=1) {
+            if(tail.Count>1) {
             tail[tail.Count-2].myTail =null;    
             Destroy(tail[tail.Count-1].gameObject);
             tail.RemoveAt(tail.Count-1);
+            
             } else {
                 isDied = true;
             }
+            
         } else if(coll.gameObject.GetComponent<TailBehavior>()!=null) {
             if(coll.gameObject.GetComponent<TailBehavior>().myParentSnake == this) {
 			isDied = true;
@@ -193,6 +235,40 @@ public class SnakeBehavior : MonoBehaviour {
                 coll.gameObject.GetComponent<TailBehavior>().KillMyself();
             }
 
-		} 
+		} else if(coll.gameObject.GetComponent<WallBehavior>()!=null) {
+            transform.position = coll.gameObject.GetComponent<WallBehavior>().ReturnSpawnPosition(collisionPosition);
+        } 
 	}
+
+    public void CutTailAt(TailBehavior cutTail) {
+        int indexOfPart = tail.IndexOf(cutTail);
+        Debug.Log("Cutting "+gameObject.name+" at "+indexOfPart);
+        if(indexOfPart>0) {
+            tail[indexOfPart].myTail = null;
+            for(int i=indexOfPart;i<tail.Count;i++) {
+                tail[i].ReplaceMyselfWithFood();
+            }   
+            tail.RemoveRange(indexOfPart,tail.Count-indexOfPart);
+        
+
+        } else if(indexOfPart ==0) {
+           for(int i=indexOfPart;i<tail.Count;i++) {
+                tail[i].ReplaceMyselfWithFood();
+            }   
+            tail.RemoveRange(indexOfPart,tail.Count-indexOfPart);
+            myTail.ReplaceMyselfWithFood();
+            myTail =null;
+            tail = new List<TailBehavior>();
+        }
+        }
+
+
+       
+
+
+
+        
+
+       
+    
 }

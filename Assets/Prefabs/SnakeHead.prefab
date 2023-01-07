@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ce164a107ea71704eb406d1eae35c6be, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 938bd5ed57f5326498a52c61ff29cd7a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -184,6 +184,9 @@ MonoBehaviour:
   tailPrefab: {fileID: 1993335981118951778, guid: 648b0b7d11cffb04eb4087492782b27a, type: 3}
   movementTick: 0.3
   headSpriteTransform: {fileID: 4493524999173234233}
+  tail: []
+  myTailTransform: {fileID: 0}
+  myTail: {fileID: 0}
 --- !u!61 &2877861273286221798
 BoxCollider2D:
   m_ObjectHideFlags: 0
