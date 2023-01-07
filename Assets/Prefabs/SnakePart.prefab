@@ -125,7 +125,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myIndex: 0
   myParentSnake: {fileID: 0}
-  myParentTailList: []
+  myTail: {fileID: 0}
+  myHead: {fileID: 0}
+  foodParticle: {fileID: 4734246911496170037, guid: 23429955c43d56a4091c58fee77a347b, type: 3}
 --- !u!50 &4969635892564349286
 Rigidbody2D:
   serializedVersion: 4

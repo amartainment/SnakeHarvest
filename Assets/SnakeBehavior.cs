@@ -24,7 +24,10 @@ public class SnakeBehavior : MonoBehaviour {
     public Transform headSpriteTransform;
 
 	// Keep Track of Tail
-	List<Transform> tail = new List<Transform>();
+	List<TailBehavior> tail = new List<TailBehavior>();
+
+    public Transform myTailTransform;
+    public TailBehavior myTail = null;
 
 	// Use this for initialization
 	void Start () {
@@ -121,67 +124,47 @@ public class SnakeBehavior : MonoBehaviour {
 			// Save current position (gap will be here)
 			Vector2 v = transform.position;
 
-			// Move head into new direction (now there is a gap)
-            if(tail.Count>0) {
-            if(v + dir != new Vector2(tail[tail.Count-1].position.x,tail[tail.Count-1].position.y)) {
+	
 			transform.Translate (dir);
             
 			// Ate something? Then insert new Element into gap
 			if (ate) {
 				// Load Prefab into the world
-				GameObject g = (GameObject)Instantiate (tailPrefab,
-					              v,
-					              Quaternion.identity);
-
+				GameObject g = (GameObject)Instantiate (tailPrefab,v,Quaternion.identity);
+                TailBehavior newTail = g.GetComponent<TailBehavior>(); 
+                newTail.SetIndex(tail.Count, this, tail);
+                newTail.SetColor(headSpriteTransform.GetComponent<SpriteRenderer>().color);
+                
 				// Keep track of it in our tail list
-				tail.Insert (0, g.transform);
+				tail.Add(newTail);
+                if(tail.Count>1) {
+                newTail.SetHead(tail[tail.IndexOf(newTail)-1].transform);
+                
+                } else {
+                    myTail = newTail;
+                    newTail.SetHead(transform);
+
+                }
                 //g.transform.parent = transform;
-                g.GetComponent<TailBehavior>().SetIndex(tail.Count, this, tail);
-                g.GetComponent<TailBehavior>().SetColor(headSpriteTransform.GetComponent<SpriteRenderer>().color);
-
-				// Reset the flag
-				ate = false;
-			} else if (tail.Count > 0) {	// Do we have a Tail?
-					// Move last Tail Element to where the Head was
-					tail.Last ().position = v;
-
-					// Add to front of list, remove from the back
-					tail.Insert (0, tail.Last ());
-					tail.RemoveAt (tail.Count - 1);
-			}
-            }
-            }
-            else {
-              transform.Translate (dir);  
               
-			// Ate something? Then insert new Element into gap
-			if (ate) {
-				// Load Prefab into the world
-				GameObject g = (GameObject)Instantiate (tailPrefab,
-					              v,
-					              Quaternion.identity);
-
-				// Keep track of it in our tail list
-				tail.Insert (0, g.transform);
-                g.GetComponent<TailBehavior>().SetIndex(tail.Count, this, tail);
 
 				// Reset the flag
 				ate = false;
-			} else if (tail.Count > 0) {	// Do we have a Tail?
-					// Move last Tail Element to where the Head was
-					tail.Last ().position = v;
-
-					// Add to front of list, remove from the back
-					tail.Insert (0, tail.Last ());
-					tail.RemoveAt (tail.Count - 1);
-			}
-            }
-           // headSpriteTransform.rotation = Quaternion.Euler(eulerRotationAngles);
-            
-
+			
+         
             
 		}
+        if(myTail!=null){
+        PassPositionToTail(v);
+        }
 	}
+    }
+
+    void PassPositionToTail(Vector2 myOldPosition) {
+        myTail.MoveToPosition(myOldPosition);
+        
+
+    }
 
 	void OnTriggerEnter2D(Collider2D coll) {
 		// Food?
@@ -196,16 +179,17 @@ public class SnakeBehavior : MonoBehaviour {
         else if(coll.name.StartsWith("Hole")) {
             Destroy(coll.gameObject);
             if(tail.Count>=1) {
+            tail[tail.Count-2].myTail =null;    
             Destroy(tail[tail.Count-1].gameObject);
             tail.RemoveAt(tail.Count-1);
             } else {
                 isDied = true;
             }
         } else if(coll.gameObject.GetComponent<TailBehavior>()!=null) {
-            if(coll.gameObject.GetComponent<TailBehavior>().myParentSnake = this) {
+            if(coll.gameObject.GetComponent<TailBehavior>().myParentSnake == this) {
 			isDied = true;
             } else {
-                //ate = true;
+                ate = true;
                 coll.gameObject.GetComponent<TailBehavior>().KillMyself();
             }
 

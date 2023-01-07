@@ -1488,6 +1488,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SnakeHead_AI (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2202133089548573788, guid: ef56be06238bc374ebbdeb049f8c4f48, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef56be06238bc374ebbdeb049f8c4f48, type: 3}
 --- !u!1001 &1577938909
@@ -1890,6 +1894,10 @@ PrefabInstance:
     - target: {fileID: 2202133089548573788, guid: ef56be06238bc374ebbdeb049f8c4f48, type: 3}
       propertyPath: m_Name
       value: SnakeHead_AI (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2202133089548573788, guid: ef56be06238bc374ebbdeb049f8c4f48, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef56be06238bc374ebbdeb049f8c4f48, type: 3}
@@ -2353,6 +2361,10 @@ PrefabInstance:
     - target: {fileID: 2202133089548573788, guid: ef56be06238bc374ebbdeb049f8c4f48, type: 3}
       propertyPath: m_Name
       value: SnakeHead_AI
+      objectReference: {fileID: 0}
+    - target: {fileID: 2202133089548573788, guid: ef56be06238bc374ebbdeb049f8c4f48, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef56be06238bc374ebbdeb049f8c4f48, type: 3}
