@@ -24,7 +24,7 @@ public class SnakeBehavior : MonoBehaviour {
     public Transform headSpriteTransform;
 
 	// Keep Track of Tail
-	List<TailBehavior> tail = new List<TailBehavior>();
+	public List<TailBehavior> tail = new List<TailBehavior>();
 
     public Transform myTailTransform;
     public TailBehavior myTail = null;

@@ -969,6 +969,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5082112887827626469, guid: 2364623bf6b34414ba453664cae4c694, type: 3}
   m_PrefabInstance: {fileID: 5082112886830961674}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1150873074 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5082112887827626488, guid: 2364623bf6b34414ba453664cae4c694, type: 3}
+  m_PrefabInstance: {fileID: 5082112886830961674}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1150873071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7e3d2ee0a65f0440b4046a2a2c9bbb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!50 &1150873076
 Rigidbody2D:
   serializedVersion: 4
@@ -1113,8 +1124,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190335
+  m_fontColor: {r: 1, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1211,7 +1222,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textBoxTimer: {fileID: 1218465533}
-  levelTime: 10
+  textBoxHarvestLength: {fileID: 1429699545}
+  requiredLength: 5
+  requiredLevelTime: 10
+  playerSnake: {fileID: 1150873074}
 --- !u!4 &1250169756
 Transform:
   m_ObjectHideFlags: 0
@@ -1340,7 +1354,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 5
+  m_text: 2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
