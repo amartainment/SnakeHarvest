@@ -1499,6 +1499,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2202133089548573761, guid: ef56be06238bc374ebbdeb049f8c4f48, type: 3}
+      propertyPath: movementTick
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 2202133089548573762, guid: ef56be06238bc374ebbdeb049f8c4f48, type: 3}
       propertyPath: m_RootOrder
       value: 26
@@ -1906,6 +1910,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2202133089548573761, guid: ef56be06238bc374ebbdeb049f8c4f48, type: 3}
+      propertyPath: movementTick
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 2202133089548573762, guid: ef56be06238bc374ebbdeb049f8c4f48, type: 3}
       propertyPath: m_RootOrder
       value: 27
@@ -2316,6 +2324,10 @@ PrefabInstance:
       propertyPath: playerSnake
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5082112887827626488, guid: 2364623bf6b34414ba453664cae4c694, type: 3}
+      propertyPath: movementTick
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 5082112887827626491, guid: 2364623bf6b34414ba453664cae4c694, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -2373,6 +2385,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2202133089548573761, guid: ef56be06238bc374ebbdeb049f8c4f48, type: 3}
+      propertyPath: movementTick
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 2202133089548573762, guid: ef56be06238bc374ebbdeb049f8c4f48, type: 3}
       propertyPath: m_RootOrder
       value: 11
