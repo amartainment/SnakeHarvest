@@ -24,13 +24,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4839264354716263337}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5082112887827626491}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!212 &5947868654775631124
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -70,7 +70,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 938bd5ed57f5326498a52c61ff29cd7a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 5082112887827626490}
   - component: {fileID: 5082112887827626488}
   - component: {fileID: 2877861273286221798}
+  - component: {fileID: 1150873076}
   m_Layer: 0
   m_Name: SnakeHead
   m_TagString: Untagged
@@ -155,8 +156,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ce164a107ea71704eb406d1eae35c6be, type: 3}
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: 938bd5ed57f5326498a52c61ff29cd7a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -179,14 +180,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7e3d2ee0a65f0440b4046a2a2c9bbb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSnake: 0
+  playerSnake: 1
+  stepByStepMode: 1
+  lowerLimit: 2
+  upperLimit: 5
+  startWithTails: 1
+  startingTailCount: 1
   isDied: 0
   tailPrefab: {fileID: 1993335981118951778, guid: 648b0b7d11cffb04eb4087492782b27a, type: 3}
   movementTick: 0.3
   headSpriteTransform: {fileID: 4493524999173234233}
   tail: []
   myTailTransform: {fileID: 0}
+  myManager: {fileID: 0}
   myTail: {fileID: 0}
+  movementCouroutinRunning: 0
 --- !u!61 &2877861273286221798
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -197,7 +205,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -211,5 +219,26 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9, y: 0.9}
+  m_Size: {x: 0.8, y: 0.8}
   m_EdgeRadius: 0
+--- !u!50 &1150873076
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5082112887827626469}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

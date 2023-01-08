@@ -23,19 +23,19 @@ public class WallBehavior : MonoBehaviour
         switch(myWallType) {
             case WallType.top:
             return new Vector3(0,oppositeWall.position.y,0)  + new Vector3(hitPosition.x,spawningOffset.y,0);
-            break;
+            //break;
             case WallType.right:
             return new Vector3(oppositeWall.position.x,0,0) + new Vector3(spawningOffset.x,hitPosition.y,0);
-            break;
+           // break;
             case WallType.left:
             return new Vector3(oppositeWall.position.x,0,0) + new Vector3(spawningOffset.x,hitPosition.y,0);
-            break;
+            //break;
             case WallType.bottom:
             return new Vector3(0,oppositeWall.position.y,0) + new Vector3(hitPosition.x,spawningOffset.y,0);
-            break;
+            //break;
             default:
             return Vector3.zero;
-            break;
+           // break;
 
 
         }

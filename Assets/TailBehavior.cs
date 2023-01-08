@@ -8,6 +8,8 @@ public class TailBehavior : MonoBehaviour
     public int myIndex =0;
     public SnakeBehavior myParentSnake;
 
+    public bool heroSnakePart = false;
+
     public Transform myTail;
     public Transform myHead;
     private List<TailBehavior> myParentTailList;
@@ -44,7 +46,7 @@ public class TailBehavior : MonoBehaviour
   
     }
 
-    public void KillMyself() {
+    public void KillMyself(bool gotEaten) {
         //old code
         /*
         if(!partDestroyed) {
@@ -61,7 +63,9 @@ public class TailBehavior : MonoBehaviour
         */
         if(!partDestroyed) {
         partDestroyed = true;
-        myParentSnake.CutTailAt(this);
+        if(myParentSnake!=null) {
+        myParentSnake.CutTailAt(this,gotEaten);
+        }
         }
     }
 
@@ -74,9 +78,26 @@ public class TailBehavior : MonoBehaviour
     }
 
     public void ReplaceMyselfWithFood() {
+        if(heroSnakePart) {
+            GetComponent<Animator>().Play("DeflatePart");
+        } else {
+            GetComponent<Animator>().Play("DeflateEnemy");
+        }
+        GameObject food= Instantiate(foodParticle,transform.position,Quaternion.identity);
+       // food.GetComponent<SpriteRenderer>().color = Color.red;
+        
 
-        Instantiate(foodParticle,transform.position,Quaternion.identity);
+    }
+
+    public void JustDisappear() {
+        if(heroSnakePart) {
+            GetComponent<Animator>().Play("DeflatePart");
+        } else {
+            GetComponent<Animator>().Play("DeflateEnemy");
+        }
+    }
+
+    public void DestroyTheObject() {
         Destroy(gameObject);
-
     }
 }

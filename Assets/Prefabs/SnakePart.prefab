@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 180956877085943670}
   - component: {fileID: 6979632140007269276}
   - component: {fileID: 4969635892564349286}
+  - component: {fileID: 1480167133475152911}
   m_Layer: 0
   m_Name: SnakePart
   m_TagString: Untagged
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a21fa1f530dc08c44a9222a968c3ff34, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3b0cac841034f4e4db413e3de83bbca0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -109,7 +110,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.9, y: 0.9}
   m_EdgeRadius: 0
 --- !u!114 &6979632140007269276
 MonoBehaviour:
@@ -125,6 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myIndex: 0
   myParentSnake: {fileID: 0}
+  heroSnakePart: 1
   myTail: {fileID: 0}
   myHead: {fileID: 0}
   foodParticle: {fileID: 4734246911496170037, guid: 23429955c43d56a4091c58fee77a347b, type: 3}
@@ -149,3 +151,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &1480167133475152911
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1993335981118951778}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9add6ab8b5a14414b9ce68b0c61be1a4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
