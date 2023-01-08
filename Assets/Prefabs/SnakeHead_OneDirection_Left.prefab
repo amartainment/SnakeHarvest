@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 6532796436428236359}
   - component: {fileID: -6783881860691430862}
   m_Layer: 0
-  m_Name: SnakeHead_OneDirection_Right
+  m_Name: SnakeHead_OneDirection_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -243,7 +243,7 @@ MonoBehaviour:
   myManager: {fileID: 0}
   myTail: {fileID: 0}
   movementCouroutinRunning: 0
-  movementDirection: {x: 1, y: 0}
+  movementDirection: {x: -1, y: 0}
   ghost: {fileID: 7649373913863066238}
 --- !u!1 &7649373913863066238
 GameObject:

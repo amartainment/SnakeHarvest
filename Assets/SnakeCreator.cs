@@ -11,6 +11,8 @@ public class SnakeCreator : MonoBehaviour
 
     public bool replenishSnakes = false;
 
+    public List<GameObject> mySnakes;
+
     // Start is called before the first frame update
     private void OnEnable() {
         MyEventSystem.levelComplete += ReInitialize;
@@ -27,8 +29,12 @@ public class SnakeCreator : MonoBehaviour
     }
     void Start()
     {
+        if(mySnakes==null) {
+            mySnakes = new List<GameObject>();
+        }
         SpriteForEditor.enabled = false;
         Invoke("CheckChildrenAndMakeSnakesFirst",2);
+        
     }
 
     // Update is called once per frame
@@ -42,16 +48,19 @@ public class SnakeCreator : MonoBehaviour
 
 
     public void CheckChildrenAndMakeSnakesFirst() {
-        if(transform.childCount==0) {
-            Instantiate(SnakePrefab, transform.position,Quaternion.identity,transform);
+        if(mySnakes.Count==0) {
+            GameObject newSnake = Instantiate(SnakePrefab,transform.position,Quaternion.identity);
+            mySnakes.Add(newSnake);
+
             replenishSnakes = true;
         }
 
     }
 
     public void CheckChildrenAndMakeSnakes() {
-        if(transform.childCount==0) {
-            Instantiate(SnakePrefab, transform.position,Quaternion.identity,transform);
+        if(mySnakes.Count==0) {
+            GameObject newSnake = Instantiate(SnakePrefab,transform.position,Quaternion.identity);
+            mySnakes.Add(newSnake);
             replenishSnakes = true;
         }
 

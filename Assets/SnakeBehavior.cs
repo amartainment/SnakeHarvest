@@ -43,6 +43,7 @@ public class SnakeBehavior : MonoBehaviour {
 
 	// Use this for initialization
 	public void Start () {
+        myManager = GameObject.Find("_GM").GetComponent<GameManager>();
         PullValuesFromGM(1);
     
         if(startWithTails) {
@@ -76,12 +77,20 @@ public class SnakeBehavior : MonoBehaviour {
     }
 
     public void PullValuesFromGM(int i) {
-        myManager = GameObject.Find("_GM").GetComponent<GameManager>();
+        if(myManager!=null) {
         stepByStepMode = myManager.stepByStepMode;
         lowerLimit = myManager.returnRandomTarget();
         Debug.Log("setting lowerlimit to" + lowerLimit);
         upperLimit = myManager.requiredHigherLimit;
         movementTick = myManager.movementTick;
+        } else {
+            myManager = GameObject.Find("_GM").GetComponent<GameManager>();
+                   stepByStepMode = myManager.stepByStepMode;
+        lowerLimit = myManager.returnRandomTarget();
+        Debug.Log("setting lowerlimit to" + lowerLimit);
+        upperLimit = myManager.requiredHigherLimit;
+        movementTick = myManager.movementTick;
+        }
     }
 
     public void PullNewSpeedFromGM(float f) {
@@ -91,6 +100,14 @@ public class SnakeBehavior : MonoBehaviour {
 	// Update is called once per frame
 	public void Update () {
 
+        
+        
+	
+	}
+
+    private void FixedUpdate() {
+        if(myManager.levelStarted) {
+
         if(stepByStepMode) {
             SetByStepControls();
         } else {
@@ -99,9 +116,8 @@ public class SnakeBehavior : MonoBehaviour {
                 StartCoroutine(KeepMovingEnumerator());
             }
         } 
-        
-	
-	}
+        }
+    }
 
     public void CheckTailAndDie(int i) {
         if((tail.Count + 1) != lowerLimit ) {
@@ -153,20 +169,20 @@ public class SnakeBehavior : MonoBehaviour {
         	if (!isDied) {
             if(playerSnake) {
 			// Move in a new Direction?
-			if (Input.GetKey (KeyCode.D)) {
+			if (Input.GetKey (KeyCode.D) || Input.GetKey (KeyCode.RightArrow)) {
 				TryToTurn(Vector2.right);
                 eulerRotationAngles = new Vector3(0,0,-90);
             }
-			else if (Input.GetKey (KeyCode.S)) {
+			else if (Input.GetKey (KeyCode.S)|| Input.GetKey (KeyCode.DownArrow) ) {
 				TryToTurn(-Vector2.up);    // '-up' means 'down'
                 eulerRotationAngles = new Vector3(0,0,-180);
             }
-			else if (Input.GetKey (KeyCode.A)) {
+			else if (Input.GetKey (KeyCode.A) || Input.GetKey (KeyCode.LeftArrow)) {
 				TryToTurn(-Vector2.right);// '-right' means 'left'
                 eulerRotationAngles = new Vector3(0,0,90);
                 
             }
-			else if (Input.GetKey (KeyCode.W)) {
+			else if (Input.GetKey (KeyCode.W)|| Input.GetKey (KeyCode.UpArrow)) {
 				TryToTurn(Vector2.up);
                 eulerRotationAngles = new Vector3(0,0,0);
             }

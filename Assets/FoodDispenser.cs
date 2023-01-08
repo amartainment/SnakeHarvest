@@ -15,7 +15,12 @@ public class FoodDispenser : MonoBehaviour
     void Start()
     {
         spriteForEditor.enabled = false;
-        SpawnFoodAtPositions();
+        timerRunnnig = false;
+        CheckFoodReservesAndReplenish();    
+    }
+
+    private void OnEnable() {
+        timerRunnnig = false;
     }
 
     // Update is called once per frame
@@ -29,7 +34,8 @@ public class FoodDispenser : MonoBehaviour
     
 
     private void OnDisable() {
-        
+        timerRunnnig = false;
+        StopAllCoroutines();
     }
 
     private void SpawnFoodAtPositions() {

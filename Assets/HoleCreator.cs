@@ -11,8 +11,19 @@ public class HoleCreator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        timerRunning = false;
         CheckAndReplenishHole();
        spriteForEditor.enabled = false;
+    }
+
+    private void OnDisable() {
+        timerRunning = false;
+        StopAllCoroutines();
+    }
+
+    private void OnEnable() {
+        
+        timerRunning = false;
     }
 
     // Update is called once per frame
